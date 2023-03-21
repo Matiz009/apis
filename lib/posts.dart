@@ -23,7 +23,13 @@ class _PostsState extends State<Posts> {
     return Scaffold(
       body: Column(
         children: [
-          const Text("data"),
+          const Text(
+            "Data",
+            style: TextStyle(
+                fontSize: 20,
+                fontFamily: 'Times New Roman',
+                color: Colors.redAccent),
+          ),
           FutureBuilder<List<Post>>(
             future: fetchLeagues(),
             builder: (context, snapshot) {
@@ -45,16 +51,22 @@ class _PostsState extends State<Posts> {
                             );
                           },
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   decoration: const BoxDecoration(
-                                    color: Colors.black26
+                                    color: Colors.redAccent,
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Text(snapshot.data![index].title, style: const TextStyle(color: Colors.white, fontSize: 22),),
+                                    child: Text(
+                                      snapshot.data![index].title,
+                                      style: const TextStyle(
+                                          color: Colors.white, fontSize: 22),
+                                    ),
                                   ),
                                 ),
                               )

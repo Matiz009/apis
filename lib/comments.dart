@@ -21,7 +21,7 @@ class _CommentsState extends State<Comments> {
     return Scaffold(
       body: Column(
         children: [
-          const Text("data"),
+          const Text("Data"),
           FutureBuilder<List<Comment>>(
             future: fetchComments(widget.postId),
             builder: (context, snapshot) {
@@ -43,16 +43,40 @@ class _CommentsState extends State<Comments> {
                             );
                           },
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   decoration: const BoxDecoration(
-                                      color: Colors.black26
+                                      color: Colors.redAccent
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Text(snapshot.data![index].email, style: const TextStyle(color: Colors.white, fontSize: 22),),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          snapshot.data![index].email,
+                                          style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 22),
+                                        ),
+                                        Text(
+                                          snapshot.data![index].name,
+                                          style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 22),
+                                        ),
+                                        Text(
+                                          snapshot.data![index].id.toString(),
+                                          style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 22),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               )
