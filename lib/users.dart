@@ -1,29 +1,36 @@
 import 'package:flutter/material.dart';
+import 'user.dart';
 import 'package:http/http.dart' as http;
-import 'comment.dart';
-class Comments extends StatefulWidget {
-  int postId;
-   Comments({Key? key, required this.postId}) : super(key: key);
+import 'posts.dart';
+
+class Users extends StatefulWidget {
+  const Users( {Key? key}) : super(key: key);
 
   @override
-  _CommentsState createState() => _CommentsState();
+  State<Users> createState() => _UsersState();
 }
 
-class _CommentsState extends State<Comments> {
+class _UsersState extends State<Users> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    fetchComments(widget.postId);
+    getUsers();
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          const Text("Data"),
-          FutureBuilder<List<Comment>>(
-            future: fetchComments(widget.postId),
+          const Text(
+            "Data",
+            style: TextStyle(
+                fontSize: 20,
+                fontFamily: 'Times New Roman',
+                color: Colors.blueAccent),
+          ),
+          FutureBuilder<List<User>>(
+            future: getUsers(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Expanded(
@@ -38,44 +45,26 @@ class _CommentsState extends State<Comments> {
                             int id= snapshot.data![index].id;
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => Comments( postId: id),
+                                builder: (context) =>  Posts(id: id,),
                               ),
                             );
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   decoration: const BoxDecoration(
-                                      color: Colors.blueAccent
+                                    color: Colors.blueAccent,
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          snapshot.data![index].email,
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 22),
-                                        ),
-                                        Text(
-                                          snapshot.data![index].name,
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 22),
-                                        ),
-                                        Text(
-                                          snapshot.data![index].id.toString(),
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 22),
-                                        ),
-                                      ],
+                                    child: Text(
+                                      snapshot.data![index].name,
+                                      style: const TextStyle(
+                                          color: Colors.white, fontSize: 22),
                                     ),
                                   ),
                                 ),
@@ -91,19 +80,21 @@ class _CommentsState extends State<Comments> {
               }
 
               // By default, show a loading spinner.
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             },
           )
         ],
       ),
     );
   }
-}
-Future<List<Comment>> fetchComments (int posId) async {
-final response= await http.get(Uri.parse('https://jsonplaceholder.typicode.com/comments?postId=$posId'));
-if(response.statusCode==200){
-  return commentFromJson(response.body);
-}else{
-  throw Exception('error occurred');
-}
+
+  Future<List<User>> getUsers() async {
+    final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users'));
+    if (response.statusCode == 200) {
+      return userFromJson(response.body);
+    } else {
+      throw Exception('error occurred');
+    }
+
+  }
 }

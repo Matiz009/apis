@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/posts.dart';
+import 'package:quiz_app/users.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -8,13 +8,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
   @override
   void initState(){
     super.initState();
-    Future.delayed(const Duration(seconds: 6),(){
+    Future.delayed(const Duration(seconds: 10),(){
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => const Posts(),
+          builder: (context) => const Users(),
         ),
       ); // Prints after 1 second.
     });

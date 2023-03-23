@@ -5,7 +5,8 @@ import 'package:quiz_app/comments.dart';
 import 'package:quiz_app/post.dart';
 import 'package:http/http.dart' as http;
 class Posts extends StatefulWidget {
-  const Posts({Key? key}) : super(key: key);
+  int id;
+  Posts({Key? key, required this.id}) : super(key: key);
 
   @override
   _PostsState createState() => _PostsState();
@@ -16,7 +17,7 @@ class _PostsState extends State<Posts> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    fetchLeagues();
+    fetchLeagues(widget.id);
   }
   @override
   Widget build(BuildContext context) {
@@ -28,10 +29,10 @@ class _PostsState extends State<Posts> {
             style: TextStyle(
                 fontSize: 20,
                 fontFamily: 'Times New Roman',
-                color: Colors.redAccent),
+                color: Colors.blueAccent),
           ),
           FutureBuilder<List<Post>>(
-            future: fetchLeagues(),
+            future: fetchLeagues(widget.id),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Expanded(
@@ -58,7 +59,7 @@ class _PostsState extends State<Posts> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   decoration: const BoxDecoration(
-                                    color: Colors.redAccent,
+                                    color: Colors.blueAccent,
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -89,7 +90,7 @@ class _PostsState extends State<Posts> {
     );
   }
 }
-Future<List<Post>> fetchLeagues() async {
+Future<List<Post>> fetchLeagues(int id) async {
   final res = await http
       .get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
   if (res.statusCode == 200) {
