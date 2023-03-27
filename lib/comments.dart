@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:quiz_app/users.dart';
 import 'comment.dart';
 class Comments extends StatefulWidget {
   int postId;
@@ -35,10 +36,9 @@ class _CommentsState extends State<Comments> {
                       itemBuilder: (BuildContext context, int index){
                         return GestureDetector(
                           onTap: (){
-                            int id= snapshot.data![index].id;
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => Comments( postId: id),
+                                builder: (context) => const Users(),
                               ),
                             );
                           },
@@ -70,6 +70,18 @@ class _CommentsState extends State<Comments> {
                                               fontSize: 22),
                                         ),
                                         Text(
+                                          snapshot.data![index].name,
+                                          style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 22),
+                                        ),
+                                        Text(
+                                          snapshot.data![index].body,
+                                          style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 22),
+                                        ),
+                                        Text(
                                           snapshot.data![index].id.toString(),
                                           style: const TextStyle(
                                               color: Colors.white,
@@ -91,7 +103,13 @@ class _CommentsState extends State<Comments> {
               }
 
               // By default, show a loading spinner.
-              return const CircularProgressIndicator();
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Center(child: CircularProgressIndicator()),
+                ],
+              );
             },
           )
         ],

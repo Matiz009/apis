@@ -1,12 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:quiz_app/comments.dart';
-import 'package:quiz_app/post.dart';
+import 'comments.dart';
+import 'post.dart';
 import 'package:http/http.dart' as http;
 class Posts extends StatefulWidget {
-  int id;
-  Posts({Key? key, required this.id}) : super(key: key);
+  int userId;
+  Posts({Key? key,required this.userId}) : super(key: key);
 
   @override
   _PostsState createState() => _PostsState();
@@ -17,22 +15,16 @@ class _PostsState extends State<Posts> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    fetchLeagues(widget.id);
+    fetchLeagues(widget.userId);
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          const Text(
-            "Data",
-            style: TextStyle(
-                fontSize: 20,
-                fontFamily: 'Times New Roman',
-                color: Colors.blueAccent),
-          ),
+          const Text("data"),
           FutureBuilder<List<Post>>(
-            future: fetchLeagues(widget.id),
+            future: fetchLeagues(widget.userId),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Expanded(
@@ -52,8 +44,6 @@ class _PostsState extends State<Posts> {
                             );
                           },
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -63,10 +53,12 @@ class _PostsState extends State<Posts> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      snapshot.data![index].title,
-                                      style: const TextStyle(
-                                          color: Colors.white, fontSize: 22),
+                                    child: Column(
+                                      children: [
+                                        Text("Id: ${snapshot.data![index].id}", style: const TextStyle(color: Colors.white, fontSize: 22),),
+                                        Text("Title: ${snapshot.data![index].title}", style: const TextStyle(color: Colors.white, fontSize: 22),),
+                                        Text(snapshot.data![index].body, style: const TextStyle(color: Colors.white, fontSize: 22),)
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -82,7 +74,13 @@ class _PostsState extends State<Posts> {
               }
 
               // By default, show a loading spinner.
-              return const Center(child: CircularProgressIndicator());
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Center(child: CircularProgressIndicator()),
+                ],
+              );
             },
           )
         ],
@@ -90,9 +88,9 @@ class _PostsState extends State<Posts> {
     );
   }
 }
-Future<List<Post>> fetchLeagues(int id) async {
+Future<List<Post>> fetchLeagues(int userId) async {
   final res = await http
-      .get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
+      .get(Uri.parse('https://jsonplaceholder.typicode.com/posts?userId=$userId'));
   if (res.statusCode == 200) {
     return postFromJson(res.body);
   } else {
