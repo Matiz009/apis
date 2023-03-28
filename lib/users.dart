@@ -54,9 +54,68 @@ class _UsersState extends State<Users> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
                                       children: [
-                                        Text("Id: ${snapshot.data![index].id}", style: const TextStyle(color: Colors.white, fontSize: 22),),
-                                        Text("UserName: ${snapshot.data![index].username}", style: const TextStyle(color: Colors.white, fontSize: 22),),
-                                        Text("Email:${snapshot.data![index].email}", style: const TextStyle(color: Colors.white, fontSize: 22),),
+                                        Card(
+                                          elevation: 50,
+                                          shadowColor: Colors.black,
+                                          color: Colors.blueAccent[100],
+                                          child: SizedBox(
+                                            width: 300,
+                                            height: 400,
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(20.0),
+                                              child: Column(
+                                                children: [
+                                                  CircleAvatar(
+                                                    backgroundColor: Colors.blue[500],
+                                                    radius: 68,
+                                                    child: const CircleAvatar(
+                                                      backgroundImage: NetworkImage(
+                                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg86bYqZEAQhvq_mHIQ8sNWqriV608Yi-sKA&usqp=CAU"),
+                                                      radius: 60,
+                                                    ), //CircleAvatar
+                                                  ), //CircleAvatar
+                                                  const SizedBox(
+                                                    height: 20,
+                                                  ), //SizedBox
+                                                  Text(
+                                                    snapshot.data![index].username,
+                                                    style: const TextStyle(
+                                                      fontSize: 30,
+                                                      color: Colors.black87,
+                                                      fontWeight: FontWeight.w500,
+                                                    ), //TextStyle
+                                                  ), //Text
+                                                  const SizedBox(
+                                                    height: 30,
+                                                  ), //SizedBox
+                                                   Text(
+                                                    'Email: ${snapshot.data![index].email}',
+                                                    style: const TextStyle(
+                                                      fontSize: 15,
+                                                      color: Colors.black87,
+                                                    ), //TextStyle
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 10,
+                                                  ),//Text
+
+                                                  Text('Company Name: ${snapshot.data![index].company.name}',style: const TextStyle(
+                                                    fontSize: 15,
+                                                    color: Colors.black87,
+                                                  ),),//SizedBox
+                                                  const SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Text(snapshot.data![index].id.toString(),style: const TextStyle(
+                                                    fontSize: 20,
+                                                    color: Colors.black87,
+                                                  ),),//SizedBox
+                                                   //SizedBox
+                                                ],
+                                              ), //Column
+                                            ), //Padding
+                                          ), //SizedBox
+                                        ), //Card
                                       ],
                                     ),
                                   ),

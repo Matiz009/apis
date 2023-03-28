@@ -57,35 +57,50 @@ class _CommentsState extends State<Comments> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
                                       children: [
-                                        Text(
-                                          snapshot.data![index].email,
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 22),
-                                        ),
-                                        Text(
-                                          snapshot.data![index].name,
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 22),
-                                        ),
-                                        Text(
-                                          snapshot.data![index].name,
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 22),
-                                        ),
-                                        Text(
-                                          snapshot.data![index].body,
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 22),
-                                        ),
-                                        Text(
-                                          snapshot.data![index].id.toString(),
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 22),
+                                        Card(
+                                          elevation: 50,
+                                          shadowColor: Colors.black,
+                                          color: Colors.blueAccent[100],
+                                          child: SizedBox(
+                                            width: 350,
+                                            height: 450,
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(20.0),
+                                              child: Column(
+                                                children: [
+                                                  const SizedBox(
+                                                    height: 20,
+                                                  ), //SizedBox
+                                                  Text(
+                                                    snapshot.data![index].name,
+                                                    style: const TextStyle(
+                                                      fontSize: 30,
+                                                      color: Colors.black87,
+                                                      fontWeight: FontWeight.w500,
+                                                    ), //TextStyle
+                                                  ), //Text
+                                                  const SizedBox(
+                                                    height: 30,
+                                                  ), //SizedBox
+                                                  Text(
+                                                    snapshot.data![index].body,
+                                                    style: const TextStyle(
+                                                      fontSize: 15,
+                                                      color: Colors.black87,
+                                                    ), //TextStyle
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 10,
+                                                  ),//Text
+                                                  Text(snapshot.data![index].id.toString(),style: const TextStyle(
+                                                    fontSize: 20,
+                                                    color: Colors.black87,
+                                                  ),),//SizedBox
+                                                  //SizedBox
+                                                ],
+                                              ), //Column
+                                            ), //Padding
+                                          ), //SizedBox
                                         ),
                                       ],
                                     ),
