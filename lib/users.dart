@@ -19,9 +19,14 @@ class _UsersState extends State<Users> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
+        title:const Text("Users",style: TextStyle(fontFamily: 'Times New Roman',fontSize: 22,color: Colors.white,),textAlign: TextAlign.center,),
+      ),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [
-          const Text("data"),
+          //const Text("data"),
           FutureBuilder<List<User>>(
             future: fetchUsers(),
             builder: (context, snapshot) {
@@ -135,8 +140,13 @@ class _UsersState extends State<Users> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Center(child: CircularProgressIndicator()),
+                children:  [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Center(child: CircularProgressIndicator()),
+                    ],
+                  ),
                 ],
               );
             },

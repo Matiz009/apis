@@ -20,9 +20,15 @@ class _PostsState extends State<Posts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
+        title: const Text("Posts",style: TextStyle(fontFamily: 'Times New Roman',fontSize: 22,color: Colors.white),textAlign: TextAlign.center,),
+      ),
+      floatingActionButton: FloatingActionButton.extended(onPressed: (){}, label: const Text('Switch Theme'),icon: const Icon(Icons.brightness_high),),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [
-          const Text("data"),
+          //const Text("data"),
           FutureBuilder<List<Post>>(
             future: fetchLeagues(widget.userId),
             builder: (context, snapshot) {
