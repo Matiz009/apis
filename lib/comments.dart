@@ -21,8 +21,8 @@ class _CommentsState extends State<Comments> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: const Text("Comments",style: TextStyle(fontFamily: 'Times New Roman',fontSize: 22,color: Colors.white),textAlign: TextAlign.center,),
+        backgroundColor: Theme.of(context).colorScheme.background,
+        title: Text("Comments",style: TextStyle(color: Theme.of(context).colorScheme.onSurface),),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(

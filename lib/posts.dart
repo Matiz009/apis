@@ -21,10 +21,9 @@ class _PostsState extends State<Posts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: const Text("Posts",style: TextStyle(fontFamily: 'Times New Roman',fontSize: 22,color: Colors.white),textAlign: TextAlign.center,),
+        backgroundColor: Theme.of(context).colorScheme.background,
+        title: Text("Posts",style: TextStyle(color: Theme.of(context).colorScheme.onSurface),),
       ),
-      floatingActionButton: FloatingActionButton.extended(onPressed: (){}, label: const Text('Switch Theme'),icon: const Icon(Icons.brightness_high),),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [

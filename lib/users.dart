@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'change_theme_button_widget.dart';
 import 'posts.dart';
 import 'user.dart';
 import 'package:http/http.dart' as http;
@@ -20,8 +21,11 @@ class _UsersState extends State<Users> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title:const Text("Users",style: TextStyle(fontFamily: 'Times New Roman',fontSize: 22,color: Colors.white,),textAlign: TextAlign.center,),
+        backgroundColor: Theme.of(context).colorScheme.background,
+        title: Text("Users",style: TextStyle(color: Theme.of(context).colorScheme.onSurface),),
+        actions: [
+          ChangeThemeButtonWidget(),
+        ],
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
