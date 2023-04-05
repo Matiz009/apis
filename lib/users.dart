@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/navigation_widget_drawer.dart';
 import 'change_theme_button_widget.dart';
 import 'posts.dart';
 import 'user.dart';
@@ -20,17 +21,15 @@ class _UsersState extends State<Users> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const NavigationDrawerWidget(),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: const Color(0xFF363567),
+        centerTitle: true,
         title: Text("Users",style: TextStyle(color: Theme.of(context).colorScheme.onSurface),),
-        actions: [
-          ChangeThemeButtonWidget(),
-        ],
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: const Color(0xFF363567),
       body: Column(
         children: [
-          //const Text("data"),
           FutureBuilder<List<User>>(
             future: fetchUsers(),
             builder: (context, snapshot) {
@@ -57,7 +56,7 @@ class _UsersState extends State<Users> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   decoration: const BoxDecoration(
-                                      color: Colors.blueAccent,
+                                    color: Color(0xFF363567),
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -79,7 +78,7 @@ class _UsersState extends State<Users> {
                                                     radius: 68,
                                                     child: const CircleAvatar(
                                                       backgroundImage: NetworkImage(
-                                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg86bYqZEAQhvq_mHIQ8sNWqriV608Yi-sKA&usqp=CAU"),
+                                                          "https://img.freepik.com/free-vector/hand-drawn-world-book-day-illustration_23-2148871666.jpg?w=740&t=st=1680638481~exp=1680639081~hmac=4f45b9821695876a2e7dd6f82c1912d5c9b5c164a7df8cc2bd2b889e0c3f1a0e"),
                                                       radius: 60,
                                                     ), //CircleAvatar
                                                   ), //CircleAvatar
@@ -118,7 +117,7 @@ class _UsersState extends State<Users> {
                                                   Text(snapshot.data![index].id.toString(),style: const TextStyle(
                                                     fontSize: 20,
                                                     color: Colors.black87,
-                                                  ),),//SizedBox
+                                                  ),),
                                                    //SizedBox
                                                 ],
                                               ), //Column

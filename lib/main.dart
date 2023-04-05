@@ -6,9 +6,9 @@ import 'splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    systemNavigationBarColor: Colors.blueAccent, // navigation bar color
-    statusBarColor: Colors.blueAccent, // status bar color
+  SystemChrome.setSystemUIOverlayStyle( const SystemUiOverlayStyle(
+    systemNavigationBarColor: Color(0xFF363567), // navigation bar color
+    statusBarColor: Color(0xFF363567), // status bar color
   ));
 }
 

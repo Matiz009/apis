@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:quiz_app/navigation_widget_drawer.dart';
 import 'package:quiz_app/users.dart';
 import 'comment.dart';
 class Comments extends StatefulWidget {
@@ -20,8 +21,10 @@ class _CommentsState extends State<Comments> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const NavigationDrawerWidget(),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: const Color(0xFF363567),
+        centerTitle: true,
         title: Text("Comments",style: TextStyle(color: Theme.of(context).colorScheme.onSurface),),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
@@ -56,7 +59,7 @@ class _CommentsState extends State<Comments> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   decoration: const BoxDecoration(
-                                      color: Colors.blueAccent
+                                     color: Color(0xFF363567),
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/navigation_widget_drawer.dart';
 import 'comments.dart';
 import 'post.dart';
 import 'package:http/http.dart' as http;
@@ -20,8 +21,11 @@ class _PostsState extends State<Posts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      drawer: const NavigationDrawerWidget(),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: const Color(0xFF363567),
+        centerTitle: true,
         title: Text("Posts",style: TextStyle(color: Theme.of(context).colorScheme.onSurface),),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
@@ -54,7 +58,7 @@ class _PostsState extends State<Posts> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   decoration: const BoxDecoration(
-                                    color: Colors.blueAccent,
+                                    color: Color(0xFF363567),
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),

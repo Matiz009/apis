@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/users.dart';
+import 'package:quiz_app/my_home_page.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 10),(){
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => const Users(),
+          builder: (context) => const HomePage(),
         ),
       ); // Prints after 1 second.
     });
@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
-          color: Colors.blueAccent
+          color: Color(0xFF363567),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -40,10 +40,13 @@ class _SplashScreenState extends State<SplashScreen> {
               radius: 120,
               child: CircleAvatar(
                 radius: 110,
-                backgroundImage: NetworkImage('https://img.freepik.com/free-vector/cute-panda-with-bamboo_138676-3053.jpg?w=740&t=st=1679485578~exp=1679486178~hmac=66dd112edfe085422aa880200a35adffd963c4aad153987783929950a5c4fa33'),
+                backgroundImage: NetworkImage('https://img.freepik.com/free-vector/learning-concept-illustration_114360-6186.jpg?w=740&t=st=1680637984~exp=1680638584~hmac=0275c987703c466942859aaabaee936921121b242e57b0f873045ecf55477c8b'),
               ),
             )),
-            SizedBox(height: 200,),
+            SizedBox(height: 50,),
+            Text('Welcome to Quick Guides',textAlign: TextAlign.center,
+              style: TextStyle(fontWeight: FontWeight.bold,fontFamily: 'Britanic Bold',fontSize: 25,color: Colors.white),),
+            SizedBox(height: 100,),
             CircularProgressIndicator(color: Colors.white,)
           ],
         ),

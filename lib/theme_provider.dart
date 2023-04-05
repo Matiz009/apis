@@ -24,11 +24,15 @@ class MyThemes {
     scaffoldBackgroundColor: Colors.grey.shade900,
     primaryColor: Colors.black,
     colorScheme: const ColorScheme.dark(),
+    fontFamily: 'Times New Roman',
+    iconTheme: const IconThemeData(color: Colors.white),
   );
 
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Colors.white,
     colorScheme: const ColorScheme.light(),
+    fontFamily: 'Helvetica',
+    iconTheme: const IconThemeData(color: Colors.black),
   );
 }
