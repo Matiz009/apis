@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/navigation_widget_drawer.dart';
 import 'comments.dart';
+import 'home_body.dart';
 import 'post.dart';
 import 'package:http/http.dart' as http;
 class Posts extends StatefulWidget {
@@ -26,12 +27,12 @@ class _PostsState extends State<Posts> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF363567),
         centerTitle: true,
-        title: Text("Posts",style: TextStyle(color: Theme.of(context).colorScheme.onSurface),),
+        title: const Text("Posts",style: TextStyle(color: Colors.white),),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [
-          //const Text("data"),
+          const Body(),
           FutureBuilder<List<Post>>(
             future: fetchLeagues(widget.userId),
             builder: (context, snapshot) {

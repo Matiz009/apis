@@ -26,6 +26,7 @@ class MyThemes {
     colorScheme: const ColorScheme.dark(),
     fontFamily: 'Times New Roman',
     iconTheme: const IconThemeData(color: Colors.white),
+
   );
 
   static final lightTheme = ThemeData(

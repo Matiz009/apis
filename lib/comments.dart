@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:quiz_app/navigation_widget_drawer.dart';
 import 'package:quiz_app/users.dart';
 import 'comment.dart';
+import 'home_body.dart';
 class Comments extends StatefulWidget {
   int postId;
    Comments({Key? key, required this.postId}) : super(key: key);
@@ -25,12 +26,12 @@ class _CommentsState extends State<Comments> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF363567),
         centerTitle: true,
-        title: Text("Comments",style: TextStyle(color: Theme.of(context).colorScheme.onSurface),),
+        title: const Text("Comments",style: TextStyle(color: Colors.white),),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [
-          //const Text("Data"),
+          const Body(),
           FutureBuilder<List<Comment>>(
             future: fetchComments(widget.postId),
             builder: (context, snapshot) {
